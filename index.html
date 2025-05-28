@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILADO ALLEN REGINE | Public Administration</title>
+    <link rel="icon" type="image/jpg" href="ilad1.jpg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-text {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 3px solid white;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--secondary);
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .back-to-top {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .profile-img {
+            clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+            transition: all 0.5s ease;
+        }
+        
+        .profile-img:hover {
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+        }
+        
+        .input-field {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .input-field:focus {
+            border-bottom-color: var(--secondary);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white bg-opacity-90 shadow-sm z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-gray-800">ILADO<span class="text-blue-600">REGINE</span></a>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-blue-600 transition">About</a>
+                    <a href="#research" class="text-gray-700 hover:text-blue-600 transition">Research</a>
+                    <a href="#experience" class="text-gray-700 hover:text-blue-600 transition">Experience</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-600 transition">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-btn">
+                    <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="md:hidden hidden mt-4" id="mobile-menu">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-blue-600 transition">Home</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-blue-600 transition">About</a>
+                <a href="#research" class="block py-2 text-gray-700 hover:text-blue-600 transition">Research</a>
+                <a href="#experience" class="block py-2 text-gray-700 hover:text-blue-600 transition">Experience</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-blue-600 transition">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-gray-100 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 text-center md:text-left hero-text">
+                    <h1 class="text-4xl md:text-6xl font-bold text-gray-800 mb-4">ILADO ALLEN REGINE</h1>
+                    <h2 class="text-xl md:text-2xl text-blue-600 mb-6">Master's Student in Public Administration</h2>
+                    <p class="text-lg md:text-xl text-gray-600 max-w-2xl mb-8">"Committed to good governance and policy transformation through evidence-based research"</p>
+                    <a href="#about" class="inline-block px-8 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 shadow-lg">
+                        Explore My Work
+                    </a>
+                </div>
+                <div class="md:w-1/2 mt-10 md:mt-0 flex justify-center">
+                    <img src="ilad1.jpg" 
+                         alt="Professional Portrait" 
+                         class="w-full max-w-md rounded-lg shadow-2xl transform hover:scale-105 transition duration-300"
+                         style="clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);">
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator">
+            <svg class="w-8 h-8 text-gray-600 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
+                    <img src="ilad1.jpg" alt="Profile Image" class="w-64 h-64 object-cover rounded-lg shadow-xl profile-img">
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Academic & Professional Profile</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">
+                        I am a dedicated Master's student in Public Administration with a passion for governance reform and policy analysis. My academic journey has been driven by a commitment to understanding how public institutions can better serve communities through evidence-based decision making.
+                    </p>
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-3">Education</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-graduation-cap text-blue-600 mt-1 mr-3"></i>
+                                <span class="text-gray-700"><strong>Master of Public Administration</strong> - Current (Expected Graduation: 2024)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-university text-blue-600 mt-1 mr-3"></i>
+                                <span class="text-gray-700"><strong>Bachelor of Public Administration and Resource Governance</strong> - Kyambogo University (2018-2022)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="fees- structure.pdf" download class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 flex items-center">
+                            <i class="fas fa-download mr-2"></i> Download CV
+                        </a>
+                        <a href="#research" class="px-6 py-3 border border-blue-600 text-blue-600 rounded-full hover:bg-blue-50 transition duration-300 flex items-center">
+                            <i class="fas fa-book-open mr-2"></i> View Research
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Section -->
+    <section id="research" class="py-20 bg-gray-50 section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16">Research</h2>
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden card-hover transition-all duration-300">
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                            <h3 class="text-2xl font-semibold text-gray-800 mb-2">Policy Implementation in Local Governance: A Case Study of Urban Development Programs</h3>
+                            <p class="text-blue-600">Final Stages of Research</p>
+                        </div>
+                        <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">In Progress</span>
+                    </div>
+                    
+                    <div class="mb-8">
+                        <h4 class="text-xl font-semibold text-gray-800 mb-3">Abstract</h4>
+                        <p class="text-gray-600 leading-relaxed">
+                            This research examines the implementation challenges of urban development programs at the local government level, focusing on the gap between policy design and practical execution. Through qualitative case studies and quantitative analysis of program outcomes, the study identifies key institutional and administrative barriers to effective policy implementation and proposes a framework for improving governance processes.
+                        </p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 mb-8">
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-3">Objectives</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                    <span>Analyze implementation gaps in urban development programs</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                    <span>Identify institutional barriers to effective policy execution</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check-circle text-blue-600 mt-1 mr-2"></i>
+                                    <span>Develop recommendations for improved governance processes</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-semibold text-gray-800 mb-3">Supervision</h4>
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <p class="font-medium text-gray-800">Dr. Kiseka Fedrick</p>
+                                <p class="text-gray-600">Professor of Public Administration</p>
+                                <p class="text-gray-600">Kyambogo University</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-xl font-semibold text-gray-800 mb-3">Publications & Presentations</h4>
+                        <div class="space-y-4">
+                            <div class="border-l-4 border-blue-600 pl-4 py-1">
+                                <p class="font-medium text-gray-800">"Policy Implementation Challenges in Urban Governance"</p>
+                                <p class="text-gray-600">International Conference on Public Administration, 2023</p>
+                            </div>
+                            <div class="border-l-4 border-blue-600 pl-4 py-1">
+                                <p class="font-medium text-gray-800">"Bridging the Gap: From Policy to Practice"</p>
+                                <p class="text-gray-600">Journal of Public Policy (Forthcoming)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16">Experience & Portfolio</h2>
+            
+            <div class="relative timeline pl-8 md:pl-16">
+                <!-- Timeline Item 1 -->
+                <div class="relative mb-12 timeline-item">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Research Intern</h3>
+                            <span class="text-blue-600 text-sm font-medium bg-blue-100 px-3 py-1 rounded-full">June 2023 - Present</span>
+                        </div>
+                        <p class="text-gray-700 font-medium mb-2">Center for Governance Innovation</p>
+                        <p class="text-gray-600 mb-4">
+                            Conducted policy analysis and assisted in research projects focused on local government reforms. Developed case studies on successful policy implementation models.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Policy Analysis</span>
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Qualitative Research</span>
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Stakeholder Interviews</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="relative mb-12 timeline-item">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Program Coordinator</h3>
+                            <span class="text-blue-600 text-sm font-medium bg-blue-100 px-3 py-1 rounded-full">September 2021 - May 2023</span>
+                        </div>
+                        <p class="text-gray-700 font-medium mb-2">Youth Civic Engagement Initiative</p>
+                        <p class="text-gray-600 mb-4">
+                            Designed and implemented civic education programs for young adults, organizing workshops and community dialogues on governance and public participation.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Program Development</span>
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Community Engagement</span>
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Workshop Facilitation</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="relative mb-12 timeline-item">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Policy Analyst Intern</h3>
+                            <span class="text-blue-600 text-sm font-medium bg-blue-100 px-3 py-1 rounded-full">January 2021 - August 2021</span>
+                        </div>
+                        <p class="text-gray-700 font-medium mb-2">Ministry of Urban Development</p>
+                        <p class="text-gray-600 mb-4">
+                            Assisted in evaluating urban development policies, compiling research briefs, and analyzing program outcomes. Participated in interdepartmental policy review meetings.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Policy Evaluation</span>
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Data Analysis</span>
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Report Writing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="relative timeline-item">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm card-hover">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                            <h3 class="text-xl font-semibold text-gray-800">Community Development Volunteer</h3>
+                            <span class="text-blue-600 text-sm font-medium bg-blue-100 px-3 py-1 rounded-full">Summer 2020</span>
+                        </div>
+                        <p class="text-gray-700 font-medium mb-2">Rural Empowerment Project</p>
+                        <p class="text-gray-600 mb-4">
+                            Worked with local leaders to assess community needs and develop action plans for rural development initiatives. Organized training sessions on participatory governance.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Needs Assessment</span>
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Capacity Building</span>
+                            <span class="text-xs font-medium px-2.5 py-0.5 rounded-full bg-gray-100 text-gray-800">Community Mobilization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50 section">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-16">Get In Touch</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Email</h4>
+                                    <p class="text-gray-600">iladoallen23@gmail.com</p>
+                                    <p class="text-gray-600">iladoallen23@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Location</h4>
+                                    <p class="text-gray-600">Department of Public Administration</p>
+                                    <p class="text-gray-600">Kyambogo University</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-share-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Connect</h4>
+                                    <div class="flex space-x-4 mt-2">
+                                        <a href="#" class="text-gray-600 hover:text-blue-600 transition">
+                                            <i class="fab fa-linkedin-in text-xl"></i>
+                                        </a>
+                                        <a href="#" class="text-gray-600 hover:text-blue-600 transition">
+                                            <i class="fab fa-researchgate text-xl"></i>
+                                        </a>
+                                        <a href="#" class="text-gray-600 hover:text-blue-600 transition">
+                                            <i class="fab fa-google-scholar text-xl"></i>
+                                        </a>
+                                        <a href="#" class="text-gray-600 hover:text-blue-600 transition">
+                                            <i class="fab fa-twitter text-xl"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Send a Message</h3>
+                        <form class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border-b-2 border-gray-200 focus:outline-none focus:border-blue-600 input-field">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border-b-2 border-gray-200 focus:outline-none focus:border-blue-600 input-field">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-gray-700 mb-2">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border-b-2 border-gray-200 focus:outline-none focus:border-blue-600 input-field"></textarea>
+                            </div>
+                            <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition duration-300 w-full">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-gray-400">© 2025 ILADO ALLEN REGINE. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition">About</a>
+                    <a href="#research" class="text-gray-400 hover:text-white transition">Research</a>
+                    <a href="#experience" class="text-gray-400 hover:text-white transition">Experience</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a>
+                </div>
+                <div class="flex space-x-4 mt-6 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-researchgate"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-google-scholar"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="back-to-top fixed bottom-6 right-6 bg-blue-600 p-3 rounded-full shadow-lg cursor-pointer transition-all duration-300">
+            <i class="fas fa-arrow-up text-white"></i>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Scroll animations
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Back to top button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
